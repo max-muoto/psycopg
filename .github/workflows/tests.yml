@@ -258,9 +258,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {impl: c, crdb: "latest-v23.2", python: "3.11"}
-          - {impl: c, crdb: "latest-v23.1", python: "3.10", libpq: newest}
-          - {impl: python, crdb: "latest-v22.2", python: "3.12"}
+          - {impl: c, crdb: "latest-master-build", python: "3.12"}
+          - {impl: c, crdb: "latest-v23.2-build", python: "3.11"}
+          - {impl: c, crdb: "latest-v23.1-build", python: "3.10", libpq: newest}
+          - {impl: python, crdb: "latest-v22.2-build", python: "3.12"}
     env:
       PSYCOPG_IMPL: ${{ matrix.impl }}
       DEPS: ./psycopg[test] ./psycopg_pool
@@ -277,9 +278,11 @@ jobs:
         # Note: this would love to be a service, but I don't see a way to pass
         # the args to the docker run command line.
         run: |
-          docker pull cockroachdb/cockroach:${{ matrix.crdb }}
+          docker pull \
+            us-docker.pkg.dev/cockroach-cloud-images/cockroachdb/cockroach:${{ matrix.crdb }}
           docker run --rm -d --name crdb -p 26257:26257 \
-            cockroachdb/cockroach:${{ matrix.crdb }} start-single-node --insecure
+            us-docker.pkg.dev/cockroach-cloud-images/cockroachdb/cockroach:${{ matrix.crdb }} \
+            start-single-node --insecure
 
       - name: Install the wanted libpq version
         run: sudo ./tools/build/ci_install_libpq.sh ${{ matrix.libpq }}
