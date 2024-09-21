@@ -320,7 +320,7 @@ jobs:
           # The windows runner is a total mess, with random copies of the libpq
           # scattered all over the places. Give precedence to the one under our
           # control (or the illusion of it).
-          export PATH="/c/Program Files/PostgreSQL/14/bin/:$PATH"
+          export PATH="/c/Program Files/PostgreSQL/16/bin/:$PATH"
 
           # If the wheel is not delocated, import fails with some dll not found
           # (but it won't tell which one).
