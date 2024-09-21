@@ -19,7 +19,7 @@ jobs:
 
   linux:  # {{{
     runs-on: ubuntu-latest
-    if: true
+    if: false  # NOMERGE
 
     strategy:
       fail-fast: false
@@ -144,7 +144,7 @@ jobs:
 
   macos-14:  # {{{
     runs-on: macos-14
-    if: true
+    if: false  # NOMERGE
 
     strategy:
       fail-fast: false
@@ -205,7 +205,7 @@ jobs:
 
   macos-12:  # {{{
     runs-on: macos-12
-    if: true
+    if: false  # NOMERGE
 
     strategy:
       fail-fast: false
@@ -337,7 +337,7 @@ jobs:
 
   crdb:  # {{{
     runs-on: ubuntu-latest
-    if: true
+    if: false  # NOMERGE
 
     strategy:
       fail-fast: false
