@@ -314,6 +314,9 @@ jobs:
         run: |
           pip install delvewheel wheel
 
+          # Take a look what is there
+          ls PATH="/c/Program Files/PostgreSQL/"
+
           # The windows runner is a total mess, with random copies of the libpq
           # scattered all over the places. Give precedence to the one under our
           # control (or the illusion of it).
