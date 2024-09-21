@@ -316,6 +316,9 @@ jobs:
 
           # Take a look what is there
           # ls PATH="/c/Program Files/PostgreSQL/"
+          #
+          # So, as Postgres 16 is not available, what the fuck is installed there?
+          echo $PATH
 
           # The windows runner is a total mess, with random copies of the libpq
           # scattered all over the places. Give precedence to the one under our
