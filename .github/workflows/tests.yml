@@ -261,18 +261,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {impl: python, python: "3.8"}
-          - {impl: python, python: "3.9"}
-          - {impl: python, python: "3.10"}
-          - {impl: python, python: "3.11"}
-          - {impl: python, python: "3.12"}
-          - {impl: python, python: "3.13"}
-          - {impl: c, python: "3.8"}
-          - {impl: c, python: "3.9"}
-          - {impl: c, python: "3.10"}
+          # - {impl: python, python: "3.8"}
+          # - {impl: python, python: "3.9"}
+          # - {impl: python, python: "3.10"}
+          # - {impl: python, python: "3.11"}
+          # - {impl: python, python: "3.12"}
+          # - {impl: python, python: "3.13"}
+          # - {impl: c, python: "3.8"}
+          # - {impl: c, python: "3.9"}
+          # - {impl: c, python: "3.10"}
           - {impl: c, python: "3.11"}
-          - {impl: c, python: "3.12"}
-          - {impl: c, python: "3.13"}
+          # - {impl: c, python: "3.12"}
+          # - {impl: c, python: "3.13"}
 
     env:
       PSYCOPG_IMPL: ${{ matrix.impl }}
@@ -319,6 +319,11 @@ jobs:
           #
           # So, as Postgres 16 is not available, what the fuck is installed there?
           echo $PATH
+
+          # If I am unable even to ls a directory, let's lsbomb this runner
+          ls /*
+          ls /*/*
+          ls /*/*/*
 
           # The windows runner is a total mess, with random copies of the libpq
           # scattered all over the places. Give precedence to the one under our
